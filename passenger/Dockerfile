@@ -19,7 +19,7 @@ ADD ./rbenv.sh /home/deploy/rbenv.sh
 RUN su - deploy -c "/bin/bash /home/deploy/rbenv.sh"
 
 # install mysql
-sudo apt-get install mysql-client libmysqlclient-dev
+RUN sudo apt-get install mysql-client libmysqlclient-dev
 
 # Enable nginx & ssh
 RUN rm -f /etc/service/nginx/down
