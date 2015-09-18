@@ -20,6 +20,8 @@ RUN su - deploy -c "/bin/bash /home/deploy/rbenv.sh"
 
 # install mysql
 RUN apt-get install -y --force-yes mysql-client libmysqlclient-dev
+# install sqlite
+RUN apt-get install -y --force-yes sqlite3 libsqlite3-dev
 
 # Enable nginx & ssh
 RUN rm -f /etc/service/nginx/down
