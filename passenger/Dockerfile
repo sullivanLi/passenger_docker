@@ -18,6 +18,9 @@ RUN apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 ADD ./rbenv.sh /home/deploy/rbenv.sh
 RUN su - deploy -c "/bin/bash /home/deploy/rbenv.sh"
 
+# install mysql
+sudo apt-get install mysql-client libmysqlclient-dev
+
 # Enable nginx & ssh
 RUN rm -f /etc/service/nginx/down
 RUN rm -f /etc/service/sshd/down
