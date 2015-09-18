@@ -6,6 +6,9 @@ RUN useradd -ms /bin/bash deploy
 RUN echo deploy:105191102 | chpasswd
 RUN echo 'deploy  ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
+RUN su - deploy -c "cd && mkdir .ssh"
+ADD config /home/deploy/.ssh/config
+RUN chown deploy:deploy /home/deploy/.ssh/config
 
 RUN rm /etc/nginx/sites-enabled/default
 ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
