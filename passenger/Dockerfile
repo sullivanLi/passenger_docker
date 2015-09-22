@@ -17,6 +17,7 @@ ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
 RUN apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 ADD ./rbenv.sh /home/deploy/rbenv.sh
 RUN su - deploy -c "/bin/bash /home/deploy/rbenv.sh"
+RUN sed -i 's|/usr/bin/ruby|/home/deploy/.rbenv/shims/ruby|g' /etc/nginx/nginx.conf
 
 # install mysql
 RUN apt-get install -y --force-yes mysql-client libmysqlclient-dev
