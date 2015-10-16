@@ -13,6 +13,11 @@ RUN chown deploy:deploy /home/deploy/.ssh/config
 RUN rm /etc/nginx/sites-enabled/default
 ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
+# set locale utf8
+RUN su - deploy -c "echo 'export LC_ALL=en_US.UTF-8' >> /home/deploy/.bash_profile"
+RUN su - deploy -c "echo 'export LANG=en_US.UTF-8' >> /home/deploy/.bash_profile"
+RUN su - deploy -c "echo 'export LANGUAGE=en_US.UTF-8' >> /home/deploy/.bash_profile"
+
 # install rbenv
 RUN apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 ADD ./rbenv.sh /home/deploy/rbenv.sh
