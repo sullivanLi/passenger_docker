@@ -24,6 +24,7 @@ ADD ./rbenv.sh /home/deploy/rbenv.sh
 RUN su - deploy -c "/bin/bash /home/deploy/rbenv.sh"
 RUN sed -i 's|/usr/bin/ruby|/home/deploy/.rbenv/shims/ruby|g' /etc/nginx/nginx.conf
 
+RUN apt-get update
 # install mysql
 RUN apt-get install -y --force-yes mysql-client libmysqlclient-dev
 # install sqlite
